@@ -46,6 +46,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
@@ -867,14 +869,37 @@ footer {
     transform: translateY(0);
 }
 
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    :root {
+        --spacing-md: 1.5rem;
+        --spacing-lg: 2.5rem;
+        --spacing-xl: 3rem;
+        --spacing-2xl: 4rem;
+    }
+
     h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+    
+    .container {
+        padding: 0 1.25rem;
     }
 
     .logo {
@@ -884,6 +909,10 @@ footer {
 
     .nav-links {
         gap: 1.5rem;
+    }
+
+    nav {
+        justify-content: space-between; /* Push logo and hamburger apart */
     }
 
     .nav-links a {
@@ -906,6 +935,12 @@ footer {
 
     .hero .btn-group {
         flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+    }
+    
+    .hero .btn-group .btn {
+        width: 100%;
     }
 
     .process-step {
@@ -915,6 +950,15 @@ footer {
 
     .step-number {
         font-size: 3rem;
+    }
+    
+    .testimonial {
+        padding: 2rem 1.5rem; /* Reduced padding greatly for mobile */
+    }
+    
+    .testimonial-text {
+        font-size: 1.1rem; /* Slightly smaller text */
+        margin-bottom: 1.5rem;
     }
 
     /* Hamburger Menu Global */
@@ -965,10 +1009,12 @@ footer {
             transform: translateX(100%);
             transition: transform 0.4s ease-in-out;
             z-index: 1000;
+            padding: 2rem; /* Added padding */
         }
 
         .nav-links.active {
             transform: translateX(0%);
+            box-shadow: -5px 0 30px rgba(0,0,0,0.1); /* Shadow for depth */
         }
 
         .nav-links li {

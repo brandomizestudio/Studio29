@@ -330,19 +330,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-links li');
+    const menuLinks = document.querySelectorAll('.nav-links a'); // Select actual links
 
     if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            // Toggle Nav
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('toggle');
+        const toggleMenu = () => {
+             // Toggle Nav
+             navLinks.classList.toggle('active');
+             hamburger.classList.toggle('toggle');
+ 
+             // Animate Links
+             links.forEach((link, index) => {
+                 if (link.style.animation) {
+                     link.style.animation = '';
+                 } else {
+                     link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                 }
+             });
+        };
 
-            // Animate Links
-            links.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+        hamburger.addEventListener('click', toggleMenu);
+
+        // Close menu when a link is clicked
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    toggleMenu();
                 }
             });
         });
