@@ -780,6 +780,130 @@ nav {
     margin-bottom: 2.5rem;
 }
 
+/* Contact Page Styles */
+.contact-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-form-card {
+    background: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    margin-bottom: var(--spacing-xl);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-text-main);
+    letter-spacing: 0.5px;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #FAFAF8;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-text-main);
+    transition: var(--transition-fast);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-rose-gold);
+    background: white;
+    box-shadow: 0 4px 12px rgba(212, 165, 116, 0.15);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-info-container {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: var(--spacing-lg);
+}
+
+.contact-info-label {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contact-info-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--color-rose-gold);
+    margin: 10px auto 0;
+}
+
+.contact-details-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.contact-detail-item {
+    padding: 1.5rem;
+    transition: var(--transition-fast);
+}
+
+.contact-detail-item:hover {
+    transform: translateY(-5px);
+}
+
+.contact-detail-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--color-text-main);
+}
+
+.contact-detail-item p {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .contact-form-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-details-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
 /* Footer */
 footer {
     background: var(--color-text-main);

@@ -56,49 +56,32 @@
                 <p>We'd love to hear about your wedding plans and discuss how we can capture your special day.</p>
             </div>
 
-            <div style="max-width: 700px; margin: 0 auto;">
-                <div
-                    style="background: white; padding: var(--spacing-xl); border-radius: var(--card-radius); box-shadow: var(--card-shadow);">
-                    <form style="display: flex; flex-direction: column; gap: 1.5rem;">
-                        <div>
-                            <label
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-main);">Your
-                                Name *</label>
-                            <input type="text" required
-                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 12px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease;">
+            <div class="contact-wrapper">
+                <div class="contact-form-card reveal">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label class="form-label">Your Name *</label>
+                            <input type="text" required class="form-input" placeholder="e.g. Jane Doe">
                         </div>
 
-                        <div>
-                            <label
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-main);">Email
-                                Address *</label>
-                            <input type="email" required
-                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 12px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease;">
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" required class="form-input" placeholder="e.g. jane@example.com">
                         </div>
 
-                        <div>
-                            <label
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-main);">Phone
-                                Number</label>
-                            <input type="tel"
-                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 12px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease;">
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="e.g. +91 98765 43210">
                         </div>
 
-                        <div>
-                            <label
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-main);">Wedding
-                                Date</label>
-                            <input type="date"
-                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 12px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s ease;">
+                        <div class="form-group">
+                            <label class="form-label">Wedding Date</label>
+                            <input type="date" class="form-input">
                         </div>
 
-                        <div>
-                            <label
-                                style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--color-text-main);">Tell
-                                Us About Your Day *</label>
-                            <textarea required rows="6"
-                                placeholder="Share details about your wedding venue, style, and what you're looking for in a photographer..."
-                                style="width: 100%; padding: 1rem; border: 2px solid #eee; border-radius: 12px; font-family: inherit; font-size: 1rem; resize: vertical; transition: border-color 0.3s ease;"></textarea>
+                        <div class="form-group">
+                            <label class="form-label">Tell Us About Your Day *</label>
+                            <textarea required class="form-textarea" placeholder="Share details about your wedding venue, style, and what you're looking for in a photographer..."></textarea>
                         </div>
 
                         <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Send Message</button>
@@ -106,8 +89,8 @@
                 </div>
 
                 <!-- Contact Info -->
-                <div class="contact-info-container">
-                    <p class="contact-info-label">Or reach us directly:</p>
+                <div class="contact-info-container reveal">
+                    <p class="contact-info-label">Or reach us directly</p>
                     <div class="contact-details-grid">
                         <div class="contact-detail-item">
                             <h4>Visit Us</h4>
