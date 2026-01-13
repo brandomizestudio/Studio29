@@ -37,7 +37,86 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // ===== Portfolio Grid =====
+    // ===== Horizontal Scroll Gallery =====
+    const horizontalGallery = document.getElementById('horizontal-gallery');
+
+    if (horizontalGallery) {
+        // Using images from public/images/
+        const imageFiles = [
+            '003 (55).jpg', '004 (23).jpg', '005 (33).jpg',
+            '006 (22).jpg', '007 (15).jpg', '008 (17).jpg',
+            '009 (22).jpg', '010 (16).jpg', 'DSC07155-.jpg',
+            'S29_0363-.jpg', '0L8A2222-.jpg', 'AMN09385--.jpg'
+        ];
+
+        // Function to create gallery items
+        const createGalleryItem = (filename, index) => {
+            const div = document.createElement('div');
+            div.className = 'horizontal-gallery-item';
+            // div.classList.add('reveal'); // Removed reveal to prevent interference with infinite scroll
+            div.innerHTML = `
+                <img src="public/images/${encodeURIComponent(filename)}" loading="lazy" alt="Featured Story">
+            `;
+            div.addEventListener('click', () => openLightbox(`public/images/${encodeURIComponent(filename)}`));
+            return div;
+        };
+
+        // Populate initial items
+        imageFiles.forEach((filename, index) => {
+            horizontalGallery.appendChild(createGalleryItem(filename, index));
+        });
+
+        // Infinite Scroll Logic
+        const scrollSpeed = 1; // Speed in pixels per frame
+        let scrollPosition = 0;
+        let isHovered = false;
+
+        // Clone items for infinite loop illusion
+        // We need enough clones to fill the screen + buffer
+        const originalItems = Array.from(horizontalGallery.children);
+        
+        // Clone initial set to ensure smooth looping
+        originalItems.forEach(item => {
+            const clone = item.cloneNode(true);
+            // Re-attach event listener to clone (since cloneNode doesn't copy events)
+            const img = clone.querySelector('img');
+            if(img) {
+                const src = img.getAttribute('src');
+                clone.addEventListener('click', () => openLightbox(src));
+            }
+            horizontalGallery.appendChild(clone);
+        });
+
+        // Pause on hover
+        horizontalGallery.parentElement.addEventListener('mouseenter', () => {
+            isHovered = true;
+        });
+
+        horizontalGallery.parentElement.addEventListener('mouseleave', () => {
+            isHovered = false;
+        });
+
+        function animateScroll() {
+            if (!isHovered) {
+                scrollPosition += scrollSpeed;
+                
+                // Reset position when first set of items is fully scrolled out
+                // Assuming all items have same width + gap. 
+                // Better approach: Check scrollWidth/2
+                if (scrollPosition >= horizontalGallery.scrollWidth / 2) {
+                    scrollPosition = 0;
+                }
+                
+                horizontalGallery.style.transform = `translateX(-${scrollPosition}px)`;
+            }
+            requestAnimationFrame(animateScroll);
+        }
+
+        // Start animation
+        requestAnimationFrame(animateScroll);
+    }
+
+    // ===== Portfolio Grid (Legacy - kept if needed for reference, but safely checks existence) =====
     const portfolioGrid = document.getElementById('portfolio-grid');
 
     if (portfolioGrid) {
@@ -132,32 +211,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryGrid = document.getElementById('gallery-grid');
 
     if (galleryGrid) {
-        const galleryItems = [
-            { src: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=800&fit=crop', category: 'wedding' },
-            { src: 'https://images.unsplash.com/photo-1511285560982-1351cdeb9821?w=800&h=800&fit=crop', category: 'wedding' },
-            { src: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800&h=800&fit=crop', category: 'pre-wedding' },
-            { src: 'https://images.unsplash.com/photo-1520854221256-17451cc330e7?w=800&h=800&fit=crop', category: 'wedding' },
-            { src: 'https://images.unsplash.com/photo-1522673607200-1645062cd958?w=800&h=800&fit=crop', category: 'pre-wedding' },
-            { src: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&h=800&fit=crop', category: 'wedding' },
-            { src: 'https://images.unsplash.com/photo-1529636798458-92182e662485?w=800&h=800&fit=crop', category: 'pre-wedding' },
-            { src: 'https://images.unsplash.com/photo-1507915977619-6ccfe8003ae6?w=800&h=800&fit=crop', category: 'wedding' },
-            { src: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800&h=800&fit=crop', category: 'wedding' },
-            { src: 'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=800&fit=crop', category: 'pre-wedding' },
-            { src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=800&h=800&fit=crop', category: 'wedding' },
-            { src: 'https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&h=800&fit=crop', category: 'pre-wedding' },
+        // Actual images from public/gallerypage/
+        const imageFiles = [
+            '003 (8).jpg', '003 (80).jpg', '004 (25).jpg', '004 (38).jpg', '004 (50).jpg',
+            '004 (68).jpg', '004 (7).jpg', '004 (8).jpg', '004 (81).jpg', '004 (88).jpg',
+            '005 (17).jpg', '005 (34).jpg', '005 (37).jpg', '005 (40).jpg', '005 (46).jpg',
+            '005 (48).jpg', '005 (62).jpg', '005 (79).jpg', '005 (84).jpg', '006 (15).jpg',
+            '006 (57).jpg', '007 (16).jpg', '007 (52).jpg', '007 (58).jpg', '007 (73).jpg',
+            '007 (78).jpg', '008 (10).jpg', '008 (6).jpg', '008 (63).jpg', '009 (39).jpg',
+            '009 (47).jpg', '009 (62).jpg', '009 (74).jpg', '010 (12).jpg', '010 (13).jpg',
+            '010 (2).jpg', '010 (31).jpg', '010 (62).jpg', '010 (74).jpg', '010.jpg',
+            'DSC07171-.jpg', 'DSC07225-.jpg', 'DSC07260-.jpg', 'S29_0314-.jpg'
         ];
+
+        // Assign categories randomly for demonstration (or based on patterns if known)
+        const galleryItems = imageFiles.map((filename, index) => ({
+            src: `public/gallerypage/${encodeURIComponent(filename)}`,
+            category: index % 3 === 0 ? 'pre-wedding' : 'wedding' // Simple distribution
+        }));
 
         const renderGallery = (filter = 'all') => {
             galleryGrid.innerHTML = '';
+            
+            // Add fade-in effect class
+            galleryGrid.style.opacity = '0';
+            galleryGrid.style.transition = 'opacity 0.5s ease';
+
+            let visibleCount = 0;
 
             galleryItems.forEach((item, index) => {
                 if (filter === 'all' || item.category === filter) {
                     const div = document.createElement('div');
                     div.className = 'gallery-card';
-                    div.innerHTML = `<img src="${item.src}" alt="Gallery Image">`;
+                    // Lazy loading for performance
+                    div.innerHTML = `<img src="${item.src}" loading="lazy" alt="Gallery Image">`;
                     div.addEventListener('click', () => openLightbox(item.src));
                     galleryGrid.appendChild(div);
+                    visibleCount++;
                 }
+            });
+
+            // Fade in after small delay
+            requestAnimationFrame(() => {
+                galleryGrid.style.opacity = '1';
             });
         };
 

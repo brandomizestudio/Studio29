@@ -301,7 +301,7 @@ nav {
 /* Section Headers */
 .section-header {
     text-align: center;
-    max-width: 700px;
+    max-width: 1000px;
     margin: 0 auto var(--spacing-xl);
 }
 
@@ -322,6 +322,9 @@ nav {
     font-size: 1.1rem;
     color: var(--color-text-light);
     line-height: 1.8;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Services Section */
@@ -374,6 +377,107 @@ nav {
 .service-card p {
     color: var(--color-text-light);
     line-height: 1.8;
+}
+
+/* Gallery Grid - 4 Columns */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; /* Using rem directly or variable */
+    margin-bottom: var(--spacing-xl);
+}
+
+.gallery-card {
+    position: relative;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    aspect-ratio: 3 / 4; /* Portrait orientation looks good for wedding photos */
+    cursor: pointer;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-fast);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-5px);
+}
+
+@media (max-width: 1200px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Horizontal Scroll Gallery */
+.horizontal-scroll-container {
+    width: 100%;
+    overflow: hidden; /* Hide horizontal scrollbar */
+    padding: 20px 0;
+    position: relative;
+}
+
+.horizontal-scroll-track {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-md);
+    width: max-content;
+    will-change: transform; /* Optimize for animation */
+}
+
+/* Pause animation on hover */
+.horizontal-scroll-container:hover .horizontal-scroll-track {
+    animation-play-state: paused;
+}
+
+.horizontal-gallery-item {
+    width: 300px;
+    height: 450px;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-smooth);
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.horizontal-gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+.horizontal-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.horizontal-gallery-item:hover img {
+    transform: scale(1.1);
 }
 
 /* Portfolio Grid */
@@ -597,8 +701,20 @@ nav {
 /* Instagram Feed */
 .instagram-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-sm);
+}
+
+@media (max-width: 900px) {
+    .instagram-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .instagram-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .instagram-item {
