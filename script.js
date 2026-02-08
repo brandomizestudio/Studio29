@@ -225,10 +225,16 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         // Assign categories randomly for demonstration (or based on patterns if known)
-        const galleryItems = imageFiles.map((filename, index) => ({
-            src: `public/gallerypage/${encodeURIComponent(filename)}`,
-            category: index % 3 === 0 ? 'pre-wedding' : 'wedding' // Simple distribution
-        }));
+        const galleryItems = imageFiles.map((filename, index) => {
+            let category = 'wedding';
+            if (index % 3 === 0) category = 'pre-wedding';
+            else if (index % 3 === 1) category = 'haldi';
+            
+            return {
+                src: `public/gallerypage/${encodeURIComponent(filename)}`,
+                category: category
+            };
+        });
 
         const renderGallery = (filter = 'all') => {
             galleryGrid.innerHTML = '';

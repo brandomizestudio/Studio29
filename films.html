@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films | Studio 29 - Cinematic Wedding Films</title>
+    <meta name="description"
+        content="Experience the magic of your wedding day with Studio 29's cinematic wedding films. Capturing emotions, laughter, and love in motion.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styles for Films page */
+        .film-wrapper {
+            background: white;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .film-wrapper:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--card-shadow-hover);
+        }
+
+        .film-thumbnail-container {
+            position: relative;
+            aspect-ratio: 16 / 9; /* Video aspect ratio */
+            overflow: hidden;
+        }
+
+        .film-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .film-wrapper:hover .film-thumbnail {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .film-wrapper:hover .play-overlay {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-main);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .film-wrapper:hover .play-button {
+            transform: scale(1.2);
+            background: white;
+            color: var(--color-rose-gold);
+        }
+
+        .film-info {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .film-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .film-meta {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">STUDIO 29</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="stories.html">Stories</a></li>
+                    <li><a href="films.html" class="active">Films</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="tel:+919034613013" class="header-cta">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-right: 0.5rem;">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    Call Now
+                </a>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="section" style="background: var(--color-sage); padding-top: 180px; padding-bottom: var(--spacing-xl);">
+        <div class="container">
+            <div class="section-header reveal active" style="margin-bottom: 0;">
+                <span class="subtitle">Cinematic Tales</span>
+                <h1>Wedding Films</h1>
+                <p>Relive the laughter, the tears, and the vows. Our cinematic films capture the soul of your celebration.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Films Grid Section -->
+    <section class="section">
+        <div class="container">
+            <div class="stories-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                <!-- Film 1 -->
+                <div class="film-wrapper reveal">
+                    <div class="film-thumbnail-container">
+                        <img src="public/images/003 (55).jpg" alt="Akshita & Sourav Film" class="film-thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="film-info">
+                        <h3 class="film-title">Akshita & Sourav</h3>
+                        <div class="film-meta">Wedding Teaser • Hisar</div>
+                    </div>
+                </div>
+
+                <!-- Film 2 -->
+                <div class="film-wrapper reveal">
+                    <div class="film-thumbnail-container">
+                        <img src="public/images/004 (23).jpg" alt="Malkit & Harman Film" class="film-thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="film-info">
+                        <h3 class="film-title">Malkit & Harman</h3>
+                        <div class="film-meta">Cinematic Highlight • Ludhiana</div>
+                    </div>
+                </div>
+
+                <!-- Film 3 -->
+                <div class="film-wrapper reveal">
+                    <div class="film-thumbnail-container">
+                        <img src="public/images/005 (33).jpg" alt="Partham & Tamanna Film" class="film-thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="film-info">
+                        <h3 class="film-title">Partham & Tamanna</h3>
+                        <div class="film-meta">Wedding Film • Gurugram</div>
+                    </div>
+                </div>
+                
+                 <!-- Film 4 -->
+                <div class="film-wrapper reveal">
+                    <div class="film-thumbnail-container">
+                        <img src="public/images/006 (22).jpg" alt="Riya & Arjun Film" class="film-thumbnail">
+                        <div class="play-overlay">
+                            <div class="play-button">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="film-info">
+                        <h3 class="film-title">Riya & Arjun</h3>
+                        <div class="film-meta">Pre-Wedding Film • Jaipur</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 style="font-size: 2rem; margin-bottom: 1rem;">STUDIO 29</h3>
+                <p style="margin-bottom: 2rem; opacity: 0.8;">Premium Wedding Photography & Videography</p>
+
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                    <a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg></a>
+                    <a href="#" aria-label="Pinterest"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0z"></path>
+                            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"></path>
+                            <line x1="12" y1="22" x2="12" y2="15.5"></line>
+                        </svg></a>
+                </div>
+
+                <p style="opacity: 0.6; font-size: 0.9rem;">&copy; 2024 Studio 29. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
