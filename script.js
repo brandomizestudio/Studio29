@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     div.className = 'portfolio-item';
                     div.style.animationDelay = `${index * 0.1}s`;
                     div.innerHTML = `
-                        <img src="${item.src}" alt="${item.title}">
+                        <img src="${item.src}" loading="lazy" alt="${item.title}">
                         <div class="portfolio-overlay">
                             <h3>${item.title}</h3>
                             <p class="category">${item.subtitle}</p>

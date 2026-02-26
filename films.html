@@ -101,6 +101,25 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        @media (max-width: 768px) {
+            .stories-grid {
+                grid-template-columns: 1fr;
+                /* Ensure grid takes full width */
+                width: 100%;
+            }
+
+            .film-wrapper {
+                /* Center the card and prevent it from being too wide */
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .film-info {
+                padding: 1.5rem;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
@@ -152,11 +171,11 @@
     <!-- Films Grid Section -->
     <section class="section">
         <div class="container">
-            <div class="stories-grid" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+            <div class="stories-grid">
                 <!-- Film 1 -->
                 <div class="film-wrapper reveal">
                     <div class="film-thumbnail-container">
-                        <img src="public/images/003 (55).jpg" alt="Akshita & Sourav Film" class="film-thumbnail">
+                        <img src="public/images/003 (55).jpg" alt="Akshita & Sourav Film" class="film-thumbnail" loading="lazy">
                         <div class="play-overlay">
                             <div class="play-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -174,7 +193,7 @@
                 <!-- Film 2 -->
                 <div class="film-wrapper reveal">
                     <div class="film-thumbnail-container">
-                        <img src="public/images/004 (23).jpg" alt="Malkit & Harman Film" class="film-thumbnail">
+                        <img src="public/images/004 (23).jpg" alt="Malkit & Harman Film" class="film-thumbnail" loading="lazy">
                         <div class="play-overlay">
                             <div class="play-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -192,7 +211,7 @@
                 <!-- Film 3 -->
                 <div class="film-wrapper reveal">
                     <div class="film-thumbnail-container">
-                        <img src="public/images/005 (33).jpg" alt="Partham & Tamanna Film" class="film-thumbnail">
+                        <img src="public/images/005 (33).jpg" alt="Partham & Tamanna Film" class="film-thumbnail" loading="lazy">
                         <div class="play-overlay">
                             <div class="play-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">
@@ -210,7 +229,7 @@
                  <!-- Film 4 -->
                 <div class="film-wrapper reveal">
                     <div class="film-thumbnail-container">
-                        <img src="public/images/006 (22).jpg" alt="Riya & Arjun Film" class="film-thumbnail">
+                        <img src="public/images/006 (22).jpg" alt="Riya & Arjun Film" class="film-thumbnail" loading="lazy">
                         <div class="play-overlay">
                             <div class="play-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none">

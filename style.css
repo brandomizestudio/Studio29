@@ -1289,37 +1289,71 @@ footer {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 
-    /* Mobile Nav Drawer Styles */
-    /* .hamburger definition moved up */
-
+    /* Mobile Nav Card Styles (Redesigned) */
     .nav-links {
         position: fixed;
-        right: 0;
-        height: 100vh;
-        top: 0;
-        background-color: var(--color-bg-main);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        width: 85%;
+        max-width: 340px;
+        height: auto;
+        background-color: white;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        max-width: 100%;
-        transform: translateX(100%);
-        visibility: hidden; /* Hide when off-screen to prevent scroll width issues */
-        transition: transform 0.4s ease-in-out, visibility 0.4s;
+        border-radius: 24px;
+        padding: 3rem 2rem;
         z-index: 1000;
-        padding: 2rem;
-        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 100vmax rgba(0,0,0,0.5); /* Card shadow + Backdrop */
     }
 
     .nav-links.active {
-        transform: translateX(0%);
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
         visibility: visible;
-        box-shadow: -5px 0 30px rgba(0,0,0,0.1);
     }
 
     .nav-links li {
-        margin: 20px 0;
+        margin: 12px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--color-text-main);
+        display: block;
+        padding: 5px;
+    }
+
+    /* Style the Contact link as a button */
+    .nav-links li:last-child {
+        margin-top: 15px;
+    }
+
+    .nav-links a[href="contact.html"] {
+        background-color: #2C2C2C;
+        color: white !important;
+        padding: 14px 36px;
+        border-radius: 50px;
+        display: inline-block;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        transition: transform 0.2s ease;
+    }
+
+    .nav-links a[href="contact.html"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    
+    .nav-links a[href="contact.html"]::after {
+        display: none; /* Remove underline effect */
     }
 
     .hero .btn-group {
@@ -1442,7 +1476,7 @@ footer {
     }
     
     .story-image {
-        height: 300px;
+        height: 580px;
     }
 }
 
@@ -1680,5 +1714,10 @@ footer {
     
     .story-hero-inner {
         border-radius: 15px;
+    }
+
+    /* Specific override for Stories Page Grid on mobile */
+    .stories-page-grid .story-image {
+        height: 650px !important;
     }
 }
