@@ -332,28 +332,87 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ===== Mobile Hamburger Menu =====
+    // ===== Mobile Hamburger Menu (Portal Implementation) =====
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links li');
-    const menuLinks = document.querySelectorAll('.nav-links a'); // Select actual links
+    const originalNavLinks = document.querySelector('.nav-links'); // The UL in header
 
-    if (hamburger) {
+    if (hamburger && originalNavLinks) {
+        // Create Portal Container
+        const mobileMenuOverlay = document.createElement('div');
+        mobileMenuOverlay.className = 'mobile-menu-overlay';
+        
+        // Create Close Button
+        const closeBtn = document.createElement('div');
+        closeBtn.className = 'mobile-menu-close';
+        closeBtn.innerHTML = '&times;';
+        mobileMenuOverlay.appendChild(closeBtn);
+
+        // Clone Links
+        const linksList = document.createElement('ul');
+        // Get all LI elements from original nav
+        const originalLis = originalNavLinks.querySelectorAll('li');
+        
+        originalLis.forEach(li => {
+            // Clone the LI
+            const clonedLi = li.cloneNode(true);
+            linksList.appendChild(clonedLi);
+            
+            // Add click listener to close menu when link clicked
+            const link = clonedLi.querySelector('a');
+            if (link) {
+                link.addEventListener('click', () => {
+                    toggleMenu();
+                });
+            }
+        });
+        
+        mobileMenuOverlay.appendChild(linksList);
+        document.body.appendChild(mobileMenuOverlay);
+
         const toggleMenu = () => {
-             // Toggle Nav
-             navLinks.classList.toggle('active');
-             hamburger.classList.toggle('toggle');
+             // Toggle Active Class on Overlay
+             const isActive = mobileMenuOverlay.classList.contains('active');
+             
+             if (isActive) {
+                 mobileMenuOverlay.classList.remove('active');
+                 hamburger.classList.remove('toggle');
+                 document.body.style.overflow = '';
+             } else {
+                 mobileMenuOverlay.classList.add('active');
+                 hamburger.classList.add('toggle');
+                 document.body.style.overflow = 'hidden';
+             }
         };
 
-        hamburger.addEventListener('click', toggleMenu);
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent immediate close
+            toggleMenu();
+        });
 
-        // Close menu when a link is clicked
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (navLinks.classList.contains('active')) {
-                    toggleMenu();
-                }
-            });
+        closeBtn.addEventListener('click', toggleMenu);
+
+        // Close when clicking outside the menu card (on backdrop)
+        document.addEventListener('click', (e) => {
+            if (mobileMenuOverlay.classList.contains('active') && 
+                !mobileMenuOverlay.contains(e.target) && 
+                !hamburger.contains(e.target)) {
+                // Check if click is on the overlay itself (backdrop) or outside
+                // Since overlay covers screen, clicking "outside" the card means clicking the overlay padding area?
+                // Actually, the overlay IS the card in CSS?
+                // Wait, in CSS: .mobile-menu-overlay is the CARD.
+                // The backdrop is the box-shadow.
+                // Clicking the box-shadow (backdrop) technically registers as clicking the element if it covers the screen?
+                // No, box-shadow doesn't capture clicks.
+                // But .mobile-menu-overlay is fixed and centered.
+                // If I click outside the card, I am clicking on whatever is behind it (header, body).
+                // So document click listener is correct.
+                toggleMenu();
+            }
+        });
+        
+        // Prevent clicks inside the menu from closing it
+        mobileMenuOverlay.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
     }
 });
